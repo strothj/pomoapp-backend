@@ -1,0 +1,25 @@
+{
+  "name": "pomoapp-server",
+  "version": "1.0.0",
+  "main": "dist/main.js",
+  "license": "MIT",
+  "engines": {
+    "node": ">=6.9"
+  },
+  "scripts": {
+    "lint": "eslint src/**/*.js test/**/*.js"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "eslint": "^3.9.1",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.1.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.6.0",
+    "mocha": "^3.1.2"
+  },
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
