@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+- "6.9"
+script:
+- npm run lint
+- npm test
+env:
+  secure: RME3nElAgIMIm9F80MsBmwXCC1EGl0NutmOqaxwaEo4vOwKGT7jK6v7AQ4q0DoKsSvOQUVBNHavG5OkCkwFYPpW80RyjB621iIM0UWJfjrzzTOVLVXm8nj6ODdb8uioZROmE0tLOpWZ8l2pxPbVZYXhXeZfnEe/PL899PIQg+BO6Sm9ogPtgkSoWj90tiPUeEVeD1YBDMW8d0eGTW2T7gsyKPog7CH9XJq7jRoB3wsI2AZ14Dx3hkQ1xZAmhmhu8Gxnjrvmuj7QG72iVGijRbOvXwXDcQQyvP+7P1mZqF0W4FMvdpwpz4tNwZj11mP13Qe/U9fsaiFv7I/qOF5f7RJSRcl1kbSt0kDqH4INXGenJ3NqB3uTpjSUOb5yLKAHGUI0Pj//B//nXaylK48MgMqLTAwu9byQzljLXWJICHV+wgGbjEq8xrfsTUhC6nOcZ/9JaCSL9YP0ZI6mgTgER0IlRSfjMkzvioMZ8bBwVwduV75t0EN5ymCezcoLGU7xN8V0sXz+nfpyKEa/aWfAoMJXpV8jBthfBy8/oSWQvm94I5aUWenTWhWKRj1SzYbJv/3F9C2nusMWZ1jUYSGuM2uaS2o/ERDPzZPXrFtkTCk78GHiWCEYqMBH+MzxuE0OQybWNs1vwjvJB4lUuB+qXzovkNJfIQQqsMlnQxPlZV/Q=
+deploy:
+  provider: script
+  script: tools/deploy.sh
+  on:
+    branch: master
