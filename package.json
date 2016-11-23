@@ -7,9 +7,15 @@
     "node": ">=6.9"
   },
   "scripts": {
-    "lint": "eslint src/**/*.js test/**/*.js"
+    "build": "babel-node tools/build.js",
+    "lint": "eslint src/**/*.js test/**/*.js",
+    "start": "node dist/main.bundle.js"
   },
   "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.8",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.18.0",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "eslint": "^3.9.1",
@@ -17,7 +23,10 @@
     "eslint-plugin-import": "^2.1.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.6.0",
-    "mocha": "^3.1.2"
+    "mocha": "^3.1.2",
+    "shelljs": "^0.7.5",
+    "webpack": "^1.13.3",
+    "webpack-node-externals": "^1.5.4"
   },
   "dependencies": {
     "express": "^4.14.0"
