@@ -9,7 +9,8 @@
   "scripts": {
     "build": "babel-node tools/build.js",
     "lint": "eslint src/**/*.js test/**/*.js tools/**/*.js",
-    "start": "node dist/main.bundle.js"
+    "start": "node dist/main.bundle.js",
+    "test": "mocha"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
