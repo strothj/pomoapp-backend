@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "babel-node tools/build.js",
-    "lint": "eslint src/**/*.js test/**/*.js",
+    "lint": "eslint src/**/*.js test/**/*.js tools/**/*.js",
     "start": "node dist/main.bundle.js"
   },
   "devDependencies": {
