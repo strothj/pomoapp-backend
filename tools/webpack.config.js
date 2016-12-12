@@ -15,4 +15,8 @@ export default {
   },
   externals: [nodeExternals()],
   target: 'node',
+  node: {
+    __dirname: false,
+    __filename: false,
+  },
 };

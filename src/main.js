@@ -1,11 +1,21 @@
 import express from 'express';
 import path from 'path';
 
+const staticPath = path.resolve(__dirname, '../public/static');
+const indexPath = path.resolve(__dirname, '../public/index.html');
+const singlePageRoutes = [
+  /^\/(index\.html)?$/,
+  '/login',
+  '/projects',
+];
+
 const app = express();
-// app.use(express.static('public'));
-app.use((req, res) => {
-  res.sendFile(path.resolve(__dirname, '../public/index.html'));
+
+app.use(singlePageRoutes, (req, res) => {
+  res.sendFile(indexPath);
 });
+
+app.use('/static', express.static(staticPath));
 
 function runServer(cb) {
   const port = process.env.PORT || 8080;
@@ -16,6 +26,7 @@ function runServer(cb) {
 
 if (require.main === module) {
   runServer((err) => {
+    if (!err) return;
     console.error(err); // eslint-disable-line no-console
   });
 }
