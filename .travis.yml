@@ -4,6 +4,7 @@ node_js:
 script:
 - npm run lint
 - npm test
+- npm run build
 after_success:
 - tools/deploy.sh
 env:

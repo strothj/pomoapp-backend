@@ -9,6 +9,12 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "master" ]; then
   exit 0
 fi
 
+ls -l
+git config --global user.email "travis@travis.com"
+git config --global user.name "Travis-CI"
+git add dist/main.bundle.js -f
+git commit -m "Travis deployment"
+
 echo "Deploying"
 {
   SHA=`git rev-parse --verify HEAD`
