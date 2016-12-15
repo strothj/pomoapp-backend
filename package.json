@@ -19,7 +19,8 @@
     "watch:test": "npm run test -- --watch"
   },
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "pomoapp-frontend": "^1.0.1"
   },
   "devDependencies": {
     "@types/chai": "^3.0.0",

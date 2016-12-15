@@ -4,8 +4,8 @@
 import * as express from 'express';
 import * as path from 'path';
 
-const staticPath = path.resolve(__dirname, '../public/static');
-const indexPath = path.resolve(__dirname, '../public/index.html');
+const staticPath = path.resolve(__dirname, '../node_modules/pomoapp-frontend/dist/static');
+const indexPath = path.resolve(__dirname, '../node_modules/pomoapp-frontend/dist/index.html');
 
 const app = express();
 
