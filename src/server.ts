@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { IRoutesConfig, addRoutes } from './Routes';
+import { IRoutesConfig, addRoutes } from './routes';
 
 /**
  * An option containing the server settings.

@@ -1,5 +1,7 @@
 import * as mongoose from 'mongoose';
 
+(<any>mongoose).Promise = Promise;
+
 /**
  * An object containing the database settings.
  *

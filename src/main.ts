@@ -1,9 +1,9 @@
 /**
  * Application entry point.
  */
-import { Config } from './Config';
-import { initDatabase } from './Database';
-import { startServer } from './Server';
+import { Config } from './config';
+import { initDatabase } from './database';
+import { startServer } from './server';
 
 (async () => {
   try {
