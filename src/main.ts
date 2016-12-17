@@ -1,36 +1,22 @@
 /**
  * Application entry point.
  */
-import * as express from 'express';
-import * as path from 'path';
+import { Config } from './Config';
+import { initDatabase } from './Database';
+import { startServer } from './Server';
 
-const staticPath = path.resolve(__dirname, '../node_modules/pomoapp-frontend/dist/static');
-const indexPath = path.resolve(__dirname, '../node_modules/pomoapp-frontend/dist/index.html');
+(async () => {
+  try {
 
-const app = express();
+    const config = Config.LOAD();
+    await initDatabase(config);
+    await startServer(config);
+    console.log(`Server listening on port ${config.port}`); // tslint:disable-line
 
-app.use('/static', express.static(staticPath));
+  } catch (err) {
 
-app.use('*', (_, res) => {
-  res.sendFile(indexPath);
-});
+    console.error(err);
+    process.exit(1);
 
-function runServer(cb?: (err?: Error) => void) {
-  const port = process.env.PORT || 8080;
-  app.listen(port).on('error', (err: Error) => {
-    if (cb) {
-      cb(err);
-    }
-  });
-  console.log(`Listening on port: ${port}`); // tslint:disable-line:no-console
-  cb();
-}
-
-if (require.main === module) {
-  runServer((err: Error) => {
-    if (err) {
-      console.error(err); // tslint:disable-line:no-console
-      process.exit(1);
-    }
-  });
-}
+  }
+})();
