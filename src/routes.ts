@@ -3,18 +3,20 @@ import { Express, Handler, Response, Request } from 'express';
 import * as bodyParser from 'body-parser';
 import { IUserIdentity } from './models/user';
 import { IProject, Project } from './models/project';
+import { IAuthenticationConfig, authentication } from './api/authentication';
 
 interface IRequestWithUser extends Request {
   user: IUserIdentity;
 }
 
-const placeholderAuthentication: Handler = (req: IRequestWithUser, _, next) => {
-  req.user = { user_id: '123' };
-  next();
-};
+// const placeholderAuthentication: Handler = (req: IRequestWithUser, _, next) => {
+//   req.user = { user_id: '123' };
+//   next();
+// };
 
 const getProjects: Handler = async (req: IRequestWithUser, res: Response) => {
   let projects: IProject[];
+    console.log(req.user); // tslint:disable-line
   try {
     projects = await Project.find({ user_id: req.user.user_id });
     res.json({
@@ -32,6 +34,7 @@ const addProject: Handler = async (req: IRequestWithUser, res: Response) => {
   try {
     project = req.body;
     project.user_id = req.user.user_id;
+    console.log(req.user); // tslint:disable-line
     const newProject = await Project.create(project);
     res.status(201).json(newProject);
   } catch (err) {
@@ -45,7 +48,7 @@ const addProject: Handler = async (req: IRequestWithUser, res: Response) => {
  *
  * @interface IRoutesConfig
  */
-interface IRoutesConfig {
+interface IRoutesConfig extends IAuthenticationConfig {
   indexFilePath: string;
   staticPath: string;
 }
@@ -58,7 +61,7 @@ interface IRoutesConfig {
  */
 function addRoutes(config: IRoutesConfig, app: Express) {
   app.use('/static', express.static(config.staticPath));
-  app.use('/api/v1', placeholderAuthentication);
+  app.use('/api/v1', authentication(config));
   app.use('/api/v1/projects', bodyParser.json());
   app.get('/api/v1/projects', getProjects);
   app.post('/api/v1/projects', addProject);

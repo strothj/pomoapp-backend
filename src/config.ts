@@ -16,7 +16,9 @@ class Config {
   protected constructor(
     publicPath: string,
     public readonly databaseConnectionString: string,
-    public readonly port: number
+    public readonly port: number,
+    public readonly jwtSecret: string,
+    public readonly jwtAudience: string
     ) {
     this.indexFilePath = path.join(publicPath, 'index.html');
     this.staticPath = path.join(publicPath, 'static');
@@ -38,8 +40,10 @@ class Config {
 
     const connectionString = process.env.MONGO || defaultDBConnectionString;
     const port = process.env.PORT || 8080;
+    const jwtSecret = process.env.JWT_SECRET;
+    const jwtAudience = process.env.JWT_AUDIENCE;
 
-    return new Config(publicPath, connectionString, port);
+    return new Config(publicPath, connectionString, port, jwtSecret, jwtAudience);
   }
 }
 
