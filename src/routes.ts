@@ -4,6 +4,7 @@ import * as bodyParser from 'body-parser';
 import { IUserIdentity } from './models/user';
 import { IProject, Project } from './models/project';
 import { IAuthenticationConfig, authentication } from './api/authentication';
+import { userApp } from './api/user';
 
 interface IRequestWithUser extends Request {
   user: IUserIdentity;
@@ -34,7 +35,6 @@ const addProject: Handler = async (req: IRequestWithUser, res: Response) => {
   try {
     project = req.body;
     project.user_id = req.user.user_id;
-    console.log(req.user); // tslint:disable-line
     const newProject = await Project.create(project);
     res.status(201).json(newProject);
   } catch (err) {
@@ -65,6 +65,7 @@ function addRoutes(config: IRoutesConfig, app: Express) {
   app.use('/api/v1/projects', bodyParser.json());
   app.get('/api/v1/projects', getProjects);
   app.post('/api/v1/projects', addProject);
+  app.use('/api/v1/user', userApp);
   app.get('*', (req: IRequestWithUser, res) => {
     console.log(req.user); // tslint:disable-line:no-console
     res.sendFile(config.indexFilePath);

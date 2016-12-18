@@ -11,9 +11,6 @@ interface IUserIdentity {
 }
 
 interface IUser extends IUserIdentity {
-  name: string;
-  email: string;
-  newAccount: boolean;
   lastHref: string;
 }
 
@@ -23,9 +20,6 @@ type UserSchema = ValidatedSchemaDefinition<IUser>;
 
 const userSchemaDefinition: UserSchema = {
   user_id: { type: String, required: true },
-  name: { type: String, required: true },
-  email: { type: String, required: true },
-  newAccount: { type: Boolean, required: true },
   lastHref: { type: String, require: true }
 };
 
