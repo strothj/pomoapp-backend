@@ -15,6 +15,7 @@ import { IUserIdentity } from '../models/user';
 interface IAuthenticationConfig {
   jwtSecret: string;
   jwtAudience: string;
+  disableAuthentication: boolean;
 }
 
 interface IRequestWithSubscription extends Request {
@@ -22,13 +23,25 @@ interface IRequestWithSubscription extends Request {
 }
 
 /**
+ * User account to use during testing and development.
+ */
+const dummyUser = '123';
+
+/**
  * Middleware that protects routes using JWT authentication.
  *
- * @param {IAuthenticationConfig} config
- * ClientID and ClientSecret needed to perform validation.
- * @returns {jwt.RequestHandler}
+ * @param {IAuthenticationConfig} config ClientID and ClientSecret needed to perform validation.
+ * @returns {Handler[]}
  */
 function authentication(config: IAuthenticationConfig): Handler[] {
+  // Stub authentication for testing
+  if (config.disableAuthentication) {
+    return [(req, _, next) => {
+      (<any>req).user = <IUserIdentity>{ user_id: dummyUser };
+      next();
+    }];
+  }
+
   const handlers: Handler[] = [];
 
   handlers.push(jwt({
@@ -48,4 +61,4 @@ function authentication(config: IAuthenticationConfig): Handler[] {
   return handlers;
 }
 
-export { IAuthenticationConfig, authentication };
+export { IAuthenticationConfig, authentication, dummyUser };

@@ -1,50 +1,40 @@
+/**
+ * Configuration loading module.
+ *
+ * @module config
+ */
 import * as fs from 'fs';
 import * as path from 'path';
+import { IAuthenticationConfig } from './api/authentication';
+import { IDatabaseConfig } from './database';
+import { IServerConfig } from './server';
 
 const defaultStaticPath = '../node_modules/pomoapp-frontend/dist';
 const defaultDBConnectionString = 'mongodb://127.0.0.1/pomoapp-test';
 
+// tslint:disable-next-line:no-empty-interfaces
+interface IConfig extends IAuthenticationConfig, IDatabaseConfig, IServerConfig {}
+
 /**
- * Contains the application configuration.
+ * Loads application settings from the environment.
  *
- * @class Config
+ * @returns {IConfig}
  */
-class Config {
-  public readonly indexFilePath: string;
-  public readonly staticPath: string;
-
-  protected constructor(
-    publicPath: string,
-    public readonly databaseConnectionString: string,
-    public readonly port: number,
-    public readonly jwtSecret: string,
-    public readonly jwtAudience: string
-    ) {
-    this.indexFilePath = path.join(publicPath, 'index.html');
-    this.staticPath = path.join(publicPath, 'static');
+function loadConfig(): IConfig {
+  const publicPath = process.env.PUBLIC_PATH || path.resolve(__dirname, defaultStaticPath);
+  if (!fs.existsSync(publicPath)) {
+    throw new Error(`Public asset path does not exist: ${publicPath}`);
   }
 
-  /**
-   * Loads the application configuration using environment variables.
-   *
-   * @static
-   * @returns {Config}
-   *
-   * @memberOf Config
-   */
-  public static LOAD(): Config {
-    const publicPath = process.env.PUBLIC_PATH || path.resolve(__dirname, defaultStaticPath);
-    if (!fs.existsSync(publicPath)) {
-      throw new Error(`Public asset path does not exist: ${publicPath}`);
-    }
-
-    const connectionString = process.env.MONGO || defaultDBConnectionString;
-    const port = process.env.PORT || 8080;
-    const jwtSecret = process.env.JWT_SECRET;
-    const jwtAudience = process.env.JWT_AUDIENCE;
-
-    return new Config(publicPath, connectionString, port, jwtSecret, jwtAudience);
-  }
+  return {
+    databaseConnectionString: process.env.MONGO || defaultDBConnectionString,
+    jwtSecret: process.env.JWT_SECRET,
+    jwtAudience: process.env.JWT_AUDIENCE,
+    disableAuthentication: process.env.NODE_ENV !== 'production',
+    port: process.env.PORT || 8080,
+    indexFilePath: path.join(publicPath, 'index.html'),
+    staticPath: path.join(publicPath, 'static')
+  };
 }
 
-export { Config };
+export { IConfig, loadConfig };

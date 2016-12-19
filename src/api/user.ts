@@ -16,7 +16,7 @@ userApp.get('/', (req: RequestWithIdentity, res, next) => {
         res.sendStatus(404);
         return;
       }
-      const userResp: IUser = { user_id: user.user_id, lastHref: user.lastHref };
+      const userResp: Partial<IUser> = { lastHref: user.lastHref };
       res.json(userResp);
     })
     .catch(next);
@@ -31,7 +31,8 @@ userApp.put('/', (req: RequestWithIdentity, res, next) => {
   User.findOneAndUpdate({ user_id: req.user.user_id }, newUser, { upsert: true })
     .exec()
     .then(() => {
-      res.json(newUser);
+      const createdUser: Partial<IUser> = { lastHref: newUser.lastHref };
+      res.json(createdUser);
     })
     .catch(next);
 });
