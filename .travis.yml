@@ -1,6 +1,14 @@
 language: node_js
 node_js:
 - '6.9'
+services:
+- mongodb
+addons:
+  apt:
+    sources:
+    - mongodb-3.2-precise
+    packages:
+    - mongodb-org-server
 script:
 - npm run lint
 - npm test
