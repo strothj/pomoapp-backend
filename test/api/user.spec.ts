@@ -43,12 +43,11 @@ describe('User', () => {
     chai.request(serverUrl)
       .put('/api/v1/user')
       .send({ lastHref: '/projects' })
-      .end((err, res) => {
+      .end(async (err, res) => {
         expect(err).to.not.exist;
         expect(res).to.have.status(201);
+        const doc = await User.findOne({ user_id: dummyUser }).exec();
+        expect(doc.lastHref).to.equal('/projects');
       });
-    User.findOne({ user_id: dummyUser }).exec().then((doc) => {
-      expect(doc.lastHref).to.equal('/projects');
-    });
   });
 });
