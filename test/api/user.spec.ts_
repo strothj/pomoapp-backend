@@ -2,7 +2,6 @@ import * as chai from 'chai';
 chai.use(require('chai-http'));
 const expect = chai.expect;
 
-import { Server } from 'http';
 import { runServer } from '../../src/main';
 
 import { IUser, User } from '../../src/models/user';
@@ -11,11 +10,7 @@ import { dummyUser } from '../../src/api/authentication';
 const serverUrl = 'http://localhost:8080';
 
 describe('User', () => {
-  let server: Server;
-
-  before(async () => {server = await runServer(); });
-
-  after((done) => { server.close(done); });
+  before(async () => { await runServer(); });
 
   beforeEach(async () => { await User.remove({ user_id: dummyUser }); });
 

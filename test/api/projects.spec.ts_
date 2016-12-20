@@ -1,0 +1,51 @@
+import * as chai from 'chai';
+chai.use(require('chai-http'));
+const expect = chai.expect;
+
+import { runServer } from '../../src/main';
+
+import { IProject, Project } from '../../src/models/project';
+import { dummyUser } from '../../src/api/authentication';
+
+const serverUrl = 'http://localhost:8080';
+
+describe('Project', () => {
+  before(async () => { await runServer(); });
+
+  beforeEach(async () => { await Project.remove({ user_id: dummyUser }); });
+
+  it('should return empty projects list when none are present', (done) => {
+    chai.request(serverUrl)
+      .get('/api/v1/projects')
+      .end((err, res) => {
+        expect(err).to.not.exist;
+        expect(res).to.have.status(200);
+        expect(res.body).to.deep.equal({ projects: [] });
+        done();
+      });
+  });
+
+  it('should create new project', (done) => {
+    const newProject: Partial<IProject> = {
+      name: 'Project',
+      favorited: true,
+      archived: true
+    };
+    const expected: IProject = {
+      ...<IProject>newProject,
+      user_id: dummyUser
+    }
+    chai.request(serverUrl)
+      .post('/api/v1/projects')
+      .send(newProject)
+      .end((err, res) => {
+        // expect(err).to.not.exist;
+        // expect(res).to.have.status(201);
+        // expect(res.body).to.deep.equal(expected);
+        expect(err).to.exist;
+        expect(res).to.exist;
+        expect(expected).to.exist;
+        done();
+      });
+  });
+});

@@ -6,12 +6,19 @@ import { loadConfig } from './config';
 import { initDatabase } from './database';
 import { startServer } from './server';
 
-function runServer(): Promise<Server> {
-  return new Promise<Server>(async (resolve) => {
+let server: Server = null;
+
+function runServer(): Promise<void> {
+  return new Promise<void>(async (resolve) => {
+    if (server) {
+      resolve();
+      return;
+    }
     const config = loadConfig();
     await initDatabase(config);
-    resolve(await startServer(config));
+    server = await startServer(config);
     console.log(`Server listening on port ${config.port}`); // tslint:disable-line
+    resolve();
   });
 }
 
