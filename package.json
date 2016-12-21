@@ -1,0 +1,15 @@
+{
+  "name": "pomoapp-backend",
+  "version": "1.0.0",
+  "description": "Backend for pomoapp",
+  "main": "dist/main.js",
+  "repository": {
+    "url": "git@github.com:strothj/pomoapp-backend.git",
+    "type": "git"
+  },
+  "author": "strothj <jason@jasons.io>",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^2.1.4"
+  }
+}
