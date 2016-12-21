@@ -123,12 +123,18 @@ class MultiItemResource<T extends IUserIdentity> extends ResourceBase<T> {
         const newItem = this.removeMongoFields(req.body);
         newItem.user_id = account;
         const addedItem = await this.model.create(newItem);
-        const id = addedItem._id;
-        res.status(201).json();
+        res.status(201).json(this.removeMongoFieldsAttachId(addedItem));
       } catch (err) {
         next(err);
       }
     };
+  }
+
+  private removeMongoFieldsAttachId(item: MongoDocument<T>): ItemWithID<T> {
+    const id = item._id;
+    const itemWithID = <ItemWithID<T>>this.removeMongoFields(item);
+    itemWithID.id = id;
+    return itemWithID;
   }
 
   private removeMongoFieldsFromArray(objs: MongoDocument<T>[]): T[] {

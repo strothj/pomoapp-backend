@@ -148,8 +148,7 @@ describe('Resource', () => {
       app = express();
       app.use(bodyParser.json());
       app.get('/', service.readAll());
-      // app.get('/', service.read());
-      // app.post('/', service.create());
+      app.post('/', service.create());
       // app.put('/', service.update());
       // app.delete('/', service.del());
     });
@@ -189,7 +188,7 @@ describe('Resource', () => {
         expect(err).to.not.exist;
         expect(res).to.have.status(201);
         model.findOne({ user_id: dummyUserAccount }).exec().then((item) => {
-          expected = { someField: '123', id: item._id };
+          expected = { someField: '123', id: item._id.toString() };
           expect(res.body).to.deep.equal(expected);
           done();
         });
