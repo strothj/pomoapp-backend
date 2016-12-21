@@ -20,12 +20,13 @@ abstract class ResourceBase<T extends IUserIdentity> {
     this.account = account;
   }
 
-  protected removeMongoFields(obj: MongoDocument<T>): T {
+  protected removeMongoFields(obj: MongoDocument<T>, addId?: boolean): T {
     const newObj = <T>{};
     Object.keys(this.base).forEach((key) => {
       if (key === 'user_id') { return; }
       newObj[key] = obj[key];
     });
+    if (addId) { (<any>newObj).id = obj._id; }
     return newObj;
   }
 }
@@ -92,4 +93,51 @@ class SingleItemResource<T extends IUserIdentity> extends ResourceBase<T> {
   }
 }
 
-export { ResourceBase, SingleItemResource };
+interface IItemWithID {
+  id: string;
+}
+
+type ItemWithID<T> = T & IItemWithID;
+
+class MultiItemResource<T extends IUserIdentity> extends ResourceBase<T> {
+  constructor(model: Model<T>, account: IUserAccountReader) {
+    super(model, account);
+  }
+
+  public readAll(): express.Handler {
+    return async (req, res, next) => {
+      try {
+        const account = this.account(req);
+        const items = await this.model.find({ user_id: account }).exec();
+        res.status(200).json(this.removeMongoFieldsFromArray(items));
+      } catch (err) {
+        next(err);
+      }
+    };
+  }
+
+  public create(): express.Handler {
+    return async (req, res, next) => {
+      try {
+        const account = this.account(req);
+        const newItem = this.removeMongoFields(req.body);
+        newItem.user_id = account;
+        const addedItem = await this.model.create(newItem);
+        const id = addedItem._id;
+        res.status(201).json();
+      } catch (err) {
+        next(err);
+      }
+    };
+  }
+
+  private removeMongoFieldsFromArray(objs: MongoDocument<T>[]): T[] {
+    const newItems: any[] = [];
+    objs.forEach((item) => {
+      newItems.push(this.removeMongoFields(item, true));
+    });
+    return newItems;
+  }
+}
+
+export { ResourceBase, SingleItemResource, MultiItemResource };
