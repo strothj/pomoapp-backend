@@ -1,23 +1,24 @@
 import * as mongoose from 'mongoose';
 import { DatabaseConfig } from './database.config';
 
-class Database {
-  private initialized: boolean;
-  private config: DatabaseConfig;
+(<any> mongoose).Promise = Promise;
 
-  constructor() {
-    this.config = new DatabaseConfig();
-    this.config.load();
-  }
+let initialized: boolean;
+
+class DatabaseService {
+  constructor(private config: DatabaseConfig) {}
 
   public connect(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
-      if (this.initialized) { resolve(); return; }
-      mongoose.connect(this.config.connectionString)
-        .then(resolve)
+      if (initialized) { resolve(); return; }
+      mongoose.connect(this.config.databaseConnectionString)
+        .then(() => {
+          initialized = true;
+          resolve();
+        })
         .catch(reject);
     });
   }
 }
 
-export { Database };
+export { DatabaseService };

@@ -1,3 +1,4 @@
-import { BaseSchema } from './base.schema';
+import { RepositoryBase } from './repository-base';
+import { Schema } from './schema';
 
-export { BaseSchema };
+export { RepositoryBase, Schema };

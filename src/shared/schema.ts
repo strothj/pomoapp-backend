@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 
-type BaseSchema<T> = {
+type Schema<T> = {
   [P in keyof T]: mongoose.SchemaTypeOpts<any>;
 };
 
-export { BaseSchema };
+export { Schema };

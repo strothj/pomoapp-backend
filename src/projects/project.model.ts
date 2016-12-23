@@ -1,6 +1,15 @@
 import * as mongoose from 'mongoose';
+import { Schema } from '../shared';
 import { Project } from './project.entity';
-import { projectSchema } from './project.schema';
+
+const projectSchemaDefinition: Schema<Project> = {
+  archived: { required: true, type: Boolean },
+  favorited: { required: true, type: Boolean },
+  id: { type: String },
+  name: { required: true, type: String },
+};
+
+const projectSchema = new mongoose.Schema(projectSchemaDefinition);
 
 interface ProjectDocument extends Project, mongoose.Document {}
 
