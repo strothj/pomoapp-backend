@@ -1,5 +1,23 @@
 {
   "compilerOptions": {
-    "declaration": true
-  }
+    "declaration": true,
+    "importHelpers": true,
+    "target": "ES6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "newLine": "LF",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "types": [
+      "node", "mocha"
+    ],
+    "outDir": "./dist"
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*-spec.ts"
+  ]
 }

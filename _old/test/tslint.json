@@ -1,9 +1,0 @@
-{
-  "rulesDirectory": "../node_modules/tslint-microsoft-contrib",
-  "rules": {
-    "no-require-imports": false,
-    "import-name": false,
-    "no-backbone-get-set-outside-model": false,
-    "no-http-string": false
-  }
-}
