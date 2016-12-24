@@ -28,6 +28,7 @@ describe('Project', () => {
     chai.request(app).get('/').end((err, res) => {
       expect(err).to.not.exist;
       expect(res).to.have.status(200);
+      expect(res.body).to.deep.equal([]);
       done();
     });
   });
