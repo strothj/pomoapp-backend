@@ -1,3 +1,6 @@
+/**
+ * Shared module exports.
+ */
 import { RepositoryBase } from './repository-base';
 import { Schema } from './schema';
 

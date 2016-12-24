@@ -5,9 +5,21 @@ import { DatabaseConfig } from './database.config';
 
 let initialized: boolean;
 
+/**
+ * Handles connecting to MongoDB database.
+ * 
+ * @class DatabaseService
+ */
 class DatabaseService {
   constructor(private config: DatabaseConfig) {}
 
+  /**
+   * Connects to MongoDB database. Can be called multiple times.
+   * 
+   * @returns {Promise<void>}
+   * 
+   * @memberOf DatabaseService
+   */
   public connect(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       if (initialized) { resolve(); return; }

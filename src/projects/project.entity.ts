@@ -1,3 +1,8 @@
+/**
+ * Project entity.
+ * 
+ * @class Project
+ */
 class Project {
   public id?: string;
   public name: string;

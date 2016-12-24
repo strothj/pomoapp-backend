@@ -1,4 +1,9 @@
-import 'mocha';
+/**
+ * Database service tests.
+ * 
+ * @module core/database.service.spec
+ */
+import * as mocha from 'mocha';
 import { loadConfig } from './configuration.service';
 import { DatabaseService } from './database.service';
 

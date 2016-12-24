@@ -1,5 +1,11 @@
 import * as mongoose from 'mongoose';
 
+/**
+ * Wrapper around Mongoose model.
+ * 
+ * @class RepositoryBase
+ * @template T
+ */
 class RepositoryBase<T extends mongoose.Document> {
   constructor(private readonly model: mongoose.Model<mongoose.Document>) {
   }
