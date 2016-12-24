@@ -73,4 +73,22 @@ describe('ProjectRoutes', () => {
       });
     });
   });
+
+  it('edit updates existing item', (done) => {
+    const expected: Project = {
+      name: 'project', favorited: false, archived: false
+    };
+    projectModel.create({ user: auth.mockUser(), ...expected }).then((created) => {
+      expected.id = created._id.toString();
+      expected.name = 'new project name';
+      chai.request(app).put(`/${expected.id}`).send(expected).end((err, res) => {
+        expect(err).to.not.exist;
+        expect(res).to.have.status(204);
+        projectModel.findOne({ user: auth.mockUser() }).exec().then((updated) => {
+          expect(updated.name).to.equal(expected.name);
+          done();
+        });
+      });
+    });
+  });
 });

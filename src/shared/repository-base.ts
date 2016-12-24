@@ -30,7 +30,7 @@ abstract class RepositoryBase<T extends mongoose.Document> {
     return this.model.remove(conditions).exec();
   }
 
-  public update(conditions: Object, doc: T): Promise<void> {
+  public update(conditions: Object, doc: Object): Promise<void> {
     return this.model.update(conditions, doc).exec();
   }
 

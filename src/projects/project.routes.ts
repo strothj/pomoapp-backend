@@ -40,11 +40,24 @@ class ProjectRoutes {
     }
   };
 
+  private edit: express.Handler = async (req, res, next) => {
+    try {
+      const user = this.user(req);
+      const update = this.service.stripMongoFields(req.body);
+      if (update.id) { delete update.id; }
+      await this.service.update({ user, _id: req.params.projectId }, update);
+      res.sendStatus(204);
+    } catch (err) {
+      next(err);
+    }
+  };
+
   public routes(): express.Router {
     const router = express.Router();
     router.use('/', bodyParser.json());
     router.get('/', this.getAll);
     router.post('/', this.add);
+    router.put('/:projectId', this.edit);
     return router;
   }
 }
