@@ -12,15 +12,18 @@ import { ProjectRoutes, projectModel, Project } from '.';
 chai.use(chaiHttp);
 const expect = chai.expect;
 
-describe('Project', () => {
+describe('ProjectRoutes', () => {
   let auth: MockAuthenticationService;
   let app: express.Application;
 
-  before((done) => {
+  before(() => {
     auth = new MockAuthenticationService();
     const projectRoutes = new ProjectRoutes(auth);
     app = express();
     app.use(projectRoutes.routes());
+  });
+
+  beforeEach((done) => {
     projectModel.remove({ user: auth.mockUser() }).exec().then(() => { done(); });
   });
 
@@ -48,6 +51,24 @@ describe('Project', () => {
         expect(err).to.not.exist;
         expect(res).to.have.status(200);
         expect(res.body).to.deep.equal(expected);
+        done();
+      });
+    });
+  });
+
+  it('adds new item to list', (done) => {
+    const expected: Project = {
+      name: 'project', favorited: true, archived: false
+    };
+    chai.request(app).post('/').send(expected).end((err, res) => {
+      expect(err).to.not.exist;
+      expect(res).to.have.status(201);
+      expect(res.body.id).to.be.a('string');
+      const id = res.body.id;
+      delete(res.body.id);
+      expect(res.body).to.deep.equal(expected);
+      projectModel.findOne({ user: auth.mockUser() }).exec().then((item) => {
+        expect(item._id.toString()).to.equal(id);
         done();
       });
     });

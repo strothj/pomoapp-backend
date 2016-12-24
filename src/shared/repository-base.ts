@@ -10,7 +10,7 @@ abstract class RepositoryBase<T extends mongoose.Document> {
   constructor(private readonly model: mongoose.Model<mongoose.Document>) {
   }
 
-  public create(doc: T): Promise<T> {
+  public create(doc: Object): Promise<T> {
     return this.model.create(doc);
   }
 

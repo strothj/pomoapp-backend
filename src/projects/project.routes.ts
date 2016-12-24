@@ -28,10 +28,23 @@ class ProjectRoutes {
     }
   };
 
+  private add: express.Handler = async (req, res, next) => {
+    try {
+      const user = this.user(req);
+      const newItem = this.service.stripMongoFields(req.body);
+      newItem.user = user;
+      const addedItem = await this.service.create(newItem);
+      res.status(201).send(this.service.stripMongoFields(addedItem));
+    } catch (err) {
+      next(err);
+    }
+  };
+
   public routes(): express.Router {
     const router = express.Router();
     router.use('/', bodyParser.json());
     router.get('/', this.getAll);
+    router.post('/', this.add);
     return router;
   }
 }
