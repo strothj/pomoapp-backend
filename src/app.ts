@@ -1,5 +1,12 @@
 import * as express from 'express';
-import { AppConfig, DatabaseService, StaticRoutes } from './core';
+import {
+  AppConfig,
+  AuthenticationService,
+  DatabaseService,
+  MockAuthenticationService,
+  StaticRoutes
+} from './core';
+import { ProjectRoutes } from './projects';
 
 /**
  * Application bootstrap module.
@@ -18,8 +25,19 @@ function startServer(app: express.Application, config: AppConfig): Promise<void>
 
 async function startApp(config: AppConfig) {
   if (initilizated) { return; }
+  let auth: AuthenticationService;
+
+  if (process.env.NODE_ENV !== 'production') {
+    auth = new MockAuthenticationService();
+    console.error('Warning, using mock authentication service!');
+  } else {
+    // Use production authentication service
+  }
+
   const db = new DatabaseService(config);
   const app = express();
+  app.use('/api/v1/', auth.middleware());
+  app.use('/api/v1/projects', new ProjectRoutes(auth).routes());
   app.use(new StaticRoutes(config).routes());
 
   try {

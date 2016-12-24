@@ -8,6 +8,7 @@ class Project {
   public name: string;
   public favorited: boolean;
   public archived: boolean;
+  public user?: string;
 }
 
 export { Project };

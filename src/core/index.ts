@@ -3,15 +3,17 @@
  * 
  * @module core
  */
-import { AuthenticationService } from './authentication.service';
 import { AppConfig, loadConfig } from './configuration.service';
+import { AuthenticationService } from './authentication.service';
 import { DatabaseService } from './database.service';
+import { MockAuthenticationService } from './mock-authentication.service';
 import { StaticRoutes } from './static.routes';
 
 export {
-  AuthenticationService,
   AppConfig,
+  AuthenticationService,
   DatabaseService,
   loadConfig,
+  MockAuthenticationService,
   StaticRoutes
 };

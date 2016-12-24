@@ -6,7 +6,7 @@ import * as mongoose from 'mongoose';
  * @class RepositoryBase
  * @template T
  */
-class RepositoryBase<T extends mongoose.Document> {
+abstract class RepositoryBase<T extends mongoose.Document> {
   constructor(private readonly model: mongoose.Model<mongoose.Document>) {
   }
 
@@ -33,6 +33,8 @@ class RepositoryBase<T extends mongoose.Document> {
   public update(conditions: Object, doc: T): Promise<void> {
     return this.model.update(conditions, doc).exec();
   }
+
+  public abstract stripMongoFields(itemDoc: T): Object;
 }
 
 export { RepositoryBase };

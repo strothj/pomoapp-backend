@@ -6,7 +6,8 @@ const projectSchemaDefinition: Schema<Project> = {
   archived: { required: true, type: Boolean },
   favorited: { required: true, type: Boolean },
   id: { type: String },
-  name: { required: true, type: String }
+  name: { required: true, type: String },
+  user: { required: true, type: String }
 };
 
 const projectSchema = new mongoose.Schema(projectSchemaDefinition);

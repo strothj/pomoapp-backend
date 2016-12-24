@@ -14,10 +14,10 @@ class StaticRoutes {
   }
 
   public routes(): express.Router {
-    const app = express.Router();
-    app.use('/static', express.static(this.config.staticAssets));
-    app.get('*', this.index);
-    return app;
+    const router = express.Router();
+    router.use('/static', express.static(this.config.staticAssets));
+    router.get('*', this.index);
+    return router;
   }
 }
 
