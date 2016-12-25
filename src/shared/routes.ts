@@ -51,7 +51,9 @@ class Routes<T extends Entity> {
   private del: express.Handler = async (req, res, next) => {
     try {
       const user = this.user(req);
-      await this.model.remove({ user, _id: req.params.itemId });
+      const item = await this.model.findOne({ user, _id: req.params.itemId }).exec();
+      // Using item.remove rather than model.remove so Mongoose remove hook fires.
+      await item.remove();
       res.sendStatus(200);
     } catch (err) {
       next(err);

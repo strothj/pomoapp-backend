@@ -2,7 +2,7 @@ import * as mongoose from 'mongoose';
 import { Model } from './shared';
 import { ProjectEntity } from './project.entity';
 
-const schema: mongoose.SchemaDefinition = {
+const projectSchema: mongoose.SchemaDefinition = {
   user: { required: true, type: String },
   name: { required: true, type: String },
   favorited: { required: true, type: Boolean },
@@ -12,6 +12,16 @@ const schema: mongoose.SchemaDefinition = {
 /**
  * Project model.
  */
-const projectModel = new Model<ProjectEntity>('project', schema, 'projects');
+const projectModel = new Model<ProjectEntity>('project', projectSchema, 'projects');
 
-export { projectModel };
+// Remove tasks belonging to the project being removed.
+projectModel.model.schema.pre('remove', function(next: any) {
+  const taskModel = mongoose.model('task');
+  taskModel.remove({ user: this.user, projectId: this._id }).exec() // tslint:disable-line
+    .then(next)
+    .catch((reason) => {
+      next(new Error(reason));
+    });
+});
+
+export { projectModel, projectSchema };
