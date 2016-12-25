@@ -6,7 +6,7 @@ import {
   MockAuthenticationService,
   StaticRoutes
 } from './core';
-import { ProjectRoutes } from './projects';
+import { ProjectRoutes } from './project.routes';
 
 /**
  * Application bootstrap module.
@@ -37,7 +37,7 @@ async function startApp(config: AppConfig) {
   const db = new DatabaseService(config);
   const app = express();
   app.use('/api/v1/', auth.middleware());
-  app.use('/api/v1/projects', new ProjectRoutes(auth).routes());
+  app.use('/api/v1/projects', new ProjectRoutes(auth).router());
   app.use(new StaticRoutes(config).routes());
 
   try {

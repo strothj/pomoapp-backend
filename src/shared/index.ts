@@ -1,7 +1,8 @@
 /**
- * Shared module exports.
+ * Module exports.
  */
-import { RepositoryBase } from './repository-base';
-import { Schema } from './schema';
+import { Entity } from './entity';
+import { Document, Model } from './model';
+import { Routes } from './routes';
 
-export { RepositoryBase, Schema };
+export { Document, Entity, Model, Routes };
