@@ -13,6 +13,7 @@ const taskSchema: mongoose.SchemaDefinition = {
  */
 const taskModel = new Model<TaskEntity>('task', taskSchema, 'tasks');
 
+// Do not allow adding tasks to a project that does not exist.
 taskModel.model.schema.pre('save', function(next: any) {
   const projectModel = mongoose.model('project');
   projectModel.findOne({ user: this.user, _id: this.projectId }).exec() // tslint:disable-line
