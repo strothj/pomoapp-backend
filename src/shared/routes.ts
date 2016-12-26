@@ -41,7 +41,7 @@ class Routes<T extends Entity> {
     try {
       const user = this.user(req);
       const update = <T>req.body;
-      await this.model.update({ user, _id: req.params.itemId }, update);
+      await this.model.update({ user, _id: req.params.itemId }, update).exec();
       res.sendStatus(204);
     } catch (err) {
       next(err);
