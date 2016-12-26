@@ -12,7 +12,7 @@ fi
 ls -l
 git config --global user.email "travis@travis.com"
 git config --global user.name "Travis-CI"
-git add dist/*.js -f
+git add dist/\*.js -f
 git commit -m "Travis deployment"
 
 echo "Deploying"
