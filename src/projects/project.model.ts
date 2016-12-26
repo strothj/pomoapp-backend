@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
-import { Model } from './shared';
-import { ProjectEntity } from './project.entity';
+import { Model } from '../shared';
+import { ProjectEntity } from '.';
 
 const projectSchema: mongoose.SchemaDefinition = {
   user: { required: true, type: String },

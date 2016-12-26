@@ -1,7 +1,6 @@
-import { AuthenticationService } from './core';
-import { Routes } from './shared';
-import { TaskEntity } from './task.entity';
-import { taskModel } from './task.model';
+import { AuthenticationService } from '../core';
+import { Routes } from '../shared';
+import { TaskEntity, taskModel } from '.';
 
 /**
  * Task Express routes.

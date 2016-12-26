@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
-import { Model } from './shared';
-import { projectSchema } from './project.model';
-import { TaskEntity } from './task.entity';
+import { Model } from '../shared';
+import { projectSchema } from '../projects';
+import { TaskEntity } from '.';
 
 const taskSchema: mongoose.SchemaDefinition = {
   ...projectSchema,

@@ -1,7 +1,6 @@
-import { AuthenticationService } from './core';
-import { Routes } from './shared';
-import { ProjectEntity } from './project.entity';
-import { projectModel } from './project.model';
+import { AuthenticationService } from '../core';
+import { Routes } from '../shared';
+import { ProjectEntity, projectModel } from '.';
 
 /**
  * Projects Express routes.

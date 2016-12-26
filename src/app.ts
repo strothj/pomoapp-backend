@@ -6,8 +6,9 @@ import {
   MockAuthenticationService,
   StaticRoutes
 } from './core';
-import { ProjectRoutes } from './project.routes';
-import { TaskRoutes} from './task.routes';
+import { ProjectRoutes } from './projects';
+import { TaskRoutes } from './tasks';
+import { SortRoutes } from './sorts';
 
 /**
  * Application bootstrap module.
@@ -40,6 +41,7 @@ async function startApp(config: AppConfig) {
   app.use('/api/v1/', auth.middleware());
   app.use('/api/v1/projects', new ProjectRoutes(auth).router());
   app.use('/api/v1/tasks', new TaskRoutes(auth).router());
+  app.use('/api/v1/sorts', new SortRoutes(auth).router());
   app.use(new StaticRoutes(config).routes());
 
   try {

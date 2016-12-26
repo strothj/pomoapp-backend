@@ -1,4 +1,4 @@
-import { ProjectEntity } from './project.entity';
+import { ProjectEntity } from '../projects';
 
 /**
  * Task entity.

@@ -4,11 +4,9 @@
 import * as mocha from 'mocha';
 import { expect } from 'chai';
 
-import { MockAuthenticationService } from './core';
-import { ProjectEntity } from './project.entity';
-import { projectModel } from './project.model';
-import { TaskEntity } from './task.entity';
-import { taskModel } from './task.model';
+import { MockAuthenticationService } from '../core';
+import { ProjectEntity, projectModel } from '../projects';
+import { TaskEntity, taskModel } from '.';
 
 describe('taskModel', () => {
   let auth: MockAuthenticationService;
