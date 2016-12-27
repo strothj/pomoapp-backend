@@ -1,4 +1,6 @@
 import * as path from 'path';
+import * as dotenv from 'dotenv';
+import { Auth0Config } from './auth0-authentication.config';
 import { DatabaseConfig } from './database.config';
 import { StaticConfig } from './static.config';
 
@@ -8,10 +10,11 @@ const defaultConnectionString = 'mongodb://127.0.0.1/test';
  * Contains service settings.
  * 
  * @interface AppConfig
+ * @extends {Auth0Config}
  * @extends {DatabaseConfig}
  * @extends {StaticConfig}
  */
-interface AppConfig extends DatabaseConfig, StaticConfig {
+interface AppConfig extends Auth0Config, DatabaseConfig, StaticConfig {
   serverPort: string;
 }
 
@@ -21,8 +24,13 @@ interface AppConfig extends DatabaseConfig, StaticConfig {
  * @returns {AppConfig}
  */
 function loadConfig(): AppConfig {
+  // Load variables from any present .env file.
+  dotenv.config({ silent: true });
+
   const publicDir = process.env.ASSETS || path.resolve(__dirname, '../../node_modules/pomoapp-frontend/dist');
   return {
+    authClientId: process.env.AUTH_CLIENT_ID || null,
+    authClientSecret: process.env.AUTH_CLIENT_SECRET || null,
     databaseConnectionString: process.env.DB || defaultConnectionString,
     serverPort: process.env.PORT || 8080,
     staticAssets: path.join(publicDir, 'static'),
