@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-import { Model } from '../shared';
+import { modelFactory } from '../shared';
 import { projectSchema } from '../projects';
 import { TaskEntity } from '.';
 
@@ -11,10 +11,10 @@ const taskSchema: mongoose.SchemaDefinition = {
 /**
  * Task model.
  */
-const taskModel = new Model<TaskEntity>('task', taskSchema, 'tasks');
+const taskModel = modelFactory<TaskEntity>('task', taskSchema, 'tasks');
 
 // Do not allow adding tasks to a project that does not exist.
-taskModel.model.schema.pre('save', function(next: any) {
+taskModel.schema.pre('save', function(next: any) {
   const projectModel = mongoose.model('project');
   projectModel.findOne({ user: this.user, _id: this.projectId }).exec() // tslint:disable-line
     .then((val) => {

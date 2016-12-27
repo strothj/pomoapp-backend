@@ -6,15 +6,15 @@ import * as mongoose from 'mongoose';
 import * as bodyParser from 'body-parser';
 import { AuthenticationService } from '../core';
 import { Entity } from './entity';
-import { Document, Model } from './model';
+import { Document, modelFactory } from '.';
 
 class Routes<T extends Entity> {
   private readonly user: (req: express.Request) => string;
   private readonly model: mongoose.Model<Document<T>>;
 
-  constructor(auth: AuthenticationService, model: Model<T>) {
+  constructor(auth: AuthenticationService, model: mongoose.Model<Document<T>>) {
     this.user = auth.user;
-    this.model = model.model;
+    this.model = model;
   }
 
   private getAll: express.Handler = async (req, res, next) => {

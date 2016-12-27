@@ -1,8 +1,6 @@
 /**
  * Module exports.
  */
-import { Entity } from './entity';
-import { Document, Model } from './model';
-import { Routes } from './routes';
-
-export { Document, Entity, Model, Routes };
+export { Entity } from './entity';
+export { Document, modelFactory } from './model';
+export { Routes } from './routes';
