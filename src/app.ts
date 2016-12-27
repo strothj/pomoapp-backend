@@ -1,6 +1,7 @@
 import * as express from 'express';
 import {
   AppConfig,
+  Auth0AuthenticationService,
   AuthenticationService,
   DatabaseService,
   MockAuthenticationService,
@@ -29,11 +30,12 @@ async function startApp(config: AppConfig) {
   if (initilizated) { return; }
   let auth: AuthenticationService;
 
-  if (process.env.NODE_ENV !== 'production') {
+  if (!config.authClientId || !config.authClientSecret) {
     auth = new MockAuthenticationService();
     console.error('Warning, using mock authentication service!');
   } else {
-    // Use production authentication service
+    auth = new Auth0AuthenticationService(config);
+    console.log('Using Auth0 authentication'); // tslint:disable-line:no-console
   }
 
   const db = new DatabaseService(config);

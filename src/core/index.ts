@@ -3,17 +3,9 @@
  * 
  * @module core
  */
-import { AppConfig, loadConfig } from './configuration.service';
-import { AuthenticationService } from './authentication.service';
-import { DatabaseService } from './database.service';
-import { MockAuthenticationService } from './mock-authentication.service';
-import { StaticRoutes } from './static.routes';
-
-export {
-  AppConfig,
-  AuthenticationService,
-  DatabaseService,
-  loadConfig,
-  MockAuthenticationService,
-  StaticRoutes
-};
+export { AppConfig, loadConfig } from './configuration.service';
+export { Auth0AuthenticationService } from './auth0-authentication.service';
+export { AuthenticationService } from './authentication.service';
+export { DatabaseService } from './database.service';
+export { MockAuthenticationService } from './mock-authentication.service';
+export { StaticRoutes } from './static.routes';

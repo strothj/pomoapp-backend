@@ -21,11 +21,11 @@ abstract class AuthenticationService {
    * Grants access to protected routes when a user has authenticated successfully.
    * 
    * @abstract
-   * @returns {express.Handler}
+   * @returns {express.Handler[]}
    * 
    * @memberOf AuthenticationService
    */
-  public abstract middleware(): express.Handler;
+  public abstract middleware(): express.Handler[];
 }
 
 export { AuthenticationService }

@@ -14,11 +14,11 @@ class MockAuthenticationService implements AuthenticationService {
     return userId;
   }
 
-  public middleware(): express.Handler {
-    return (req, res, next) => {
+  public middleware(): express.Handler[] {
+    return [(req, res, next) => {
       (<any>req).user = userId;
       next();
-    };
+    }];
   }
 
   public mockUser(): string {
