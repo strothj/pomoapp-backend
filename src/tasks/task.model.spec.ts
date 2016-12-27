@@ -10,8 +10,8 @@ import { TaskEntity, taskModel } from '.';
 
 describe('taskModel', () => {
   let auth: MockAuthenticationService;
-  const project = projectModel.model;
-  const task = taskModel.model;
+  const project = projectModel;
+  const task = taskModel;
 
   before(async () => {
     auth = new MockAuthenticationService();

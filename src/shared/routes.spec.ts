@@ -8,7 +8,7 @@ import * as express from 'express';
 import * as mongoose from 'mongoose';
 
 import { MockAuthenticationService } from '../core';
-import { Entity, Model, Routes } from '.';
+import { Entity, modelFactory, Routes } from '.';
 
 interface TestEntity extends Entity {
   someField: string;
@@ -28,9 +28,8 @@ describe('Routes', () => {
       user: { required: true, type: String },
       someField: { required: true, type: String }
     };
-    const modelC = new Model<TestEntity>('routeTestModel', schema);
-    const routes = new Routes<TestEntity>(auth, modelC);
-    model = modelC.model;
+    model = modelFactory<TestEntity>('routeTestModel', schema);
+    const routes = new Routes<TestEntity>(auth, model);
     app = express();
     app.use(routes.router());
   });
