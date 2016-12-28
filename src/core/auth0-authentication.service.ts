@@ -39,10 +39,6 @@ class Auth0AuthenticationService implements AuthenticationService {
 
   public middleware(): express.Handler[] {
     return [
-      (req, res, next) => {
-        console.log((<any>req).headers); // tslint:disable-line
-        next();
-      },
       this.jwtMiddleware,
       (req: IdentityRequest, res, next) => {
         if (!req.user || !req.user.sub || req.user.sub.length === 0) {

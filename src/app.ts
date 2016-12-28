@@ -41,6 +41,7 @@ async function startApp(config: AppConfig) {
   const db = new DatabaseService(config);
   const app = express();
   app.use('/api/v1/', auth.middleware());
+  app.use('/api/v1/', db.statusMiddleware());
   app.use('/api/v1/projects', new ProjectRoutes(auth).router());
   app.use('/api/v1/tasks', new TaskRoutes(auth).router());
   app.use('/api/v1/sorts', new SortRoutes(auth).router());

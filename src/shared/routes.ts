@@ -20,7 +20,7 @@ class Routes<T extends Entity> {
   private getAll: express.Handler = async (req, res, next) => {
     try {
       const user = this.user(req);
-      const found = await this.model.find({ user }).exec();
+      const found = await this.model.find({ user });
       res.status(200).json(found);
     } catch (err) { next(err); }
   }
@@ -41,7 +41,7 @@ class Routes<T extends Entity> {
     try {
       const user = this.user(req);
       const update = <T>req.body;
-      await this.model.update({ user, _id: req.params.itemId }, update).exec();
+      await this.model.update({ user, _id: req.params.itemId }, update);
       res.sendStatus(204);
     } catch (err) {
       next(err);
@@ -51,7 +51,7 @@ class Routes<T extends Entity> {
   private del: express.Handler = async (req, res, next) => {
     try {
       const user = this.user(req);
-      const item = await this.model.findOne({ user, _id: req.params.itemId }).exec();
+      const item = await this.model.findOne({ user, _id: req.params.itemId });
       // Using item.remove rather than model.remove so Mongoose remove hook fires.
       await item.remove();
       res.sendStatus(200);
