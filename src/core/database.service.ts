@@ -38,6 +38,9 @@ class DatabaseService {
       mongoose.connection.on('connected', () => {
         this.connected = true;
       });
+      mongoose.connection.on('error', (message: any) => {
+        console.error(message);
+      });
     });
   }
 
