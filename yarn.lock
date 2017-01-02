@@ -1026,14 +1026,15 @@ pinkie@^2.0.0, pinkie@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
 
-pomoapp-frontend@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/pomoapp-frontend/-/pomoapp-frontend-1.2.0.tgz#398429bbb84bf3d8650ab34d83eb266811184f6f"
+pomoapp-frontend@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/pomoapp-frontend/-/pomoapp-frontend-1.3.0.tgz#19e44ea1fc4e9dfdcfafd8cfa52ba5a2d6569f54"
   dependencies:
+    progressbar.js "^1.0.1"
     sortablejs "^1.5.0-rc1"
     superagent "^3.3.1"
     vue "^2.1.0"
-    vue-material "0.4.1"
+    vue-material "^0.5.2"
     vue-router "^2.0.3"
     vuex "^2.0.0"
 
@@ -1044,6 +1045,12 @@ prepend-http@^1.0.1:
 process-nextick-args@~1.0.6:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-1.0.7.tgz#150e20b756590ad3f91093f25a4f2ad8bff30ba3"
+
+progressbar.js@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/progressbar.js/-/progressbar.js-1.0.1.tgz#f7fbfc195240fe0bb32f6f7bdb2e7ff400ea71f9"
+  dependencies:
+    shifty "^1.5.2"
 
 proxy-addr@~1.1.2:
   version "1.1.2"
@@ -1183,6 +1190,10 @@ serve-static@~1.11.1:
 setprototypeof@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/setprototypeof/-/setprototypeof-1.0.2.tgz#81a552141ec104b88e89ce383103ad5c66564d08"
+
+shifty@^1.5.2:
+  version "1.5.4"
+  resolved "https://registry.yarnpkg.com/shifty/-/shifty-1.5.4.tgz#d4362fc914dd280ddf6e522be408b21203208346"
 
 sliced@0.0.5:
   version "0.0.5"
@@ -1427,19 +1438,23 @@ vary@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.0.tgz#e1e5affbbd16ae768dd2674394b9ad3022653140"
 
-vue-material@0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/vue-material/-/vue-material-0.4.1.tgz#56f868f0f9dfd3edc8f73a9c610e4e3a6c06b584"
+vue-material@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/vue-material/-/vue-material-0.5.2.tgz#3cac19a3517ed476b8abf284050e4998e03fc2fd"
   dependencies:
-    vue "^2.1.4"
+    vue "^2.1.7"
 
 vue-router@^2.0.3:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-2.1.1.tgz#10c31bbdcb6da92bd3e0223fa12345e73018625a"
 
-vue@^2.1.0, vue@^2.1.4:
+vue@^2.1.0:
   version "2.1.6"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.1.6.tgz#2fc0024c07479ac6bc7d34a2cd5ef9ca5e90b143"
+
+vue@^2.1.7:
+  version "2.1.8"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.1.8.tgz#ae30aa86024fccf5535292ce414e7b4c221a1756"
 
 vuex@^2.0.0:
   version "2.1.1"
