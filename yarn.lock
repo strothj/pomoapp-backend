@@ -132,6 +132,22 @@ asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
 
+auth0-js@^8.0.2:
+  version "8.0.4"
+  resolved "https://registry.yarnpkg.com/auth0-js/-/auth0-js-8.0.4.tgz#c107caf363e97d1593298164717c5351d0ffd8ff"
+  dependencies:
+    base64-js "^1.2.0"
+    idtoken-verifier "^1.0.1"
+    superagent "^3.3.1"
+    url-join "^1.1.0"
+    winchan "^0.1.4"
+
+axios@^0.15.3:
+  version "0.15.3"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.15.3.tgz#2c9d638b2e191a08ea1d6cc988eadd6ba5bdc053"
+  dependencies:
+    follow-redirects "1.0.0"
+
 babel-code-frame@^6.20.0:
   version "6.20.0"
   resolved "https://registry.yarnpkg.com/babel-code-frame/-/babel-code-frame-6.20.0.tgz#b968f839090f9a8bc6d41938fb96cb84f7387b26"
@@ -143,6 +159,10 @@ babel-code-frame@^6.20.0:
 balanced-match@^0.4.1:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-0.4.2.tgz#cb3f3e3c732dc0f01ee70b403f302e61d7709838"
+
+base64-js@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.2.0.tgz#a39992d723584811982be5e290bb6a53d86700f1"
 
 base64url@2.0.0, base64url@^2.0.0:
   version "2.0.0"
@@ -324,6 +344,10 @@ create-error-class@^3.0.1:
   dependencies:
     capture-stack-trace "^1.0.0"
 
+crypto-js@^3.1.9-1:
+  version "3.1.9-1"
+  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-3.1.9-1.tgz#fda19e761fc077e01ffbfdc6e9fdfc59e8806cd8"
+
 debug@2.2.0, debug@^2.2.0, debug@~2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.2.0.tgz#f87057e995b1a1f6ae6a4960664137bc56f039da"
@@ -400,6 +424,10 @@ error-ex@^1.2.0:
 es6-promise@3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-3.2.1.tgz#ec56233868032909207170c39448e24449dd1fc4"
+
+es6-promise@^4.0.5:
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.0.5.tgz#7882f30adde5b240ccfa7f7d78c548330951ae42"
 
 escape-html@~1.0.3:
   version "1.0.3"
@@ -484,6 +512,12 @@ findup-sync@~0.3.0:
   resolved "https://registry.yarnpkg.com/findup-sync/-/findup-sync-0.3.0.tgz#37930aa5d816b777c03445e1966cc6790a4c0b16"
   dependencies:
     glob "~5.0.0"
+
+follow-redirects@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.0.0.tgz#8e34298cbd2e176f254effec75a1c78cc849fd37"
+  dependencies:
+    debug "^2.2.0"
 
 form-data@1.0.0-rc4:
   version "1.0.0-rc4"
@@ -611,6 +645,16 @@ iconv-lite@0.4.13:
   version "0.4.13"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.13.tgz#1f88aba4ab0b1508e8312acc39345f36e992e2f2"
 
+idtoken-verifier@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/idtoken-verifier/-/idtoken-verifier-1.0.1.tgz#7563af238dfbc5aa2995744c37bf01dea3ad08ab"
+  dependencies:
+    base64-js "^1.2.0"
+    crypto-js "^3.1.9-1"
+    jsbn "^0.1.0"
+    superagent "^3.3.1"
+    url-join "^1.1.0"
+
 imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/imurmurhash/-/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
@@ -705,6 +749,10 @@ js-tokens@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-2.0.0.tgz#79903f5563ee778cc1162e6dcf1a0027c97f9cb5"
 
+jsbn@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.0.tgz#650987da0dd74f4ebf5a11377a2aa2d273e97dfd"
+
 json3@3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/json3/-/json3-3.3.2.tgz#3c0434743df93e2f5c42aee7b19bcb483575f4e1"
@@ -795,6 +843,10 @@ lodash.keys@^3.0.0:
     lodash._getnative "^3.0.0"
     lodash.isarguments "^3.0.0"
     lodash.isarray "^3.0.0"
+
+lodash.padstart@^4.6.1:
+  version "4.6.1"
+  resolved "https://registry.yarnpkg.com/lodash.padstart/-/lodash.padstart-4.6.1.tgz#d2e3eebff0d9d39ad50f5cbd1b52a7bce6bb611b"
 
 lodash.set@^4.0.0:
   version "4.3.2"
@@ -1026,15 +1078,17 @@ pinkie@^2.0.0, pinkie@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
 
-pomoapp-frontend@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/pomoapp-frontend/-/pomoapp-frontend-1.3.0.tgz#19e44ea1fc4e9dfdcfafd8cfa52ba5a2d6569f54"
+pomoapp-frontend@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/pomoapp-frontend/-/pomoapp-frontend-2.0.0.tgz#4c1f28e8486de9ede43235899df8d385e143ca4f"
   dependencies:
+    auth0-js "^8.0.2"
+    axios "^0.15.3"
+    es6-promise "^4.0.5"
+    lodash.padstart "^4.6.1"
     progressbar.js "^1.0.1"
-    sortablejs "^1.5.0-rc1"
-    superagent "^3.3.1"
     vue "^2.1.0"
-    vue-material "^0.5.2"
+    vue-material "^0.6.3"
     vue-router "^2.0.3"
     vuex "^2.0.0"
 
@@ -1206,10 +1260,6 @@ sliced@1.0.1:
 slide@^1.1.5:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/slide/-/slide-1.1.6.tgz#56eb027d65b4d2dce6cb2e2d32c4d4afc9e1d707"
-
-sortablejs@^1.5.0-rc1:
-  version "1.5.0-rc1"
-  resolved "https://registry.yarnpkg.com/sortablejs/-/sortablejs-1.5.0-rc1.tgz#c3407e9a6fc4a54b4d0804926a2e2993544d91b3"
 
 source-map-support@^0.4.0:
   version "0.4.7"
@@ -1406,6 +1456,10 @@ update-notifier@^1.0.2:
     semver-diff "^2.0.0"
     xdg-basedir "^2.0.0"
 
+url-join@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/url-join/-/url-join-1.1.0.tgz#741c6c2f4596c4830d6718460920d0c92202dc78"
+
 url-parse-lax@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/url-parse-lax/-/url-parse-lax-1.0.0.tgz#7af8f303645e9bd79a272e7a14ac68bc0609da73"
@@ -1438,11 +1492,11 @@ vary@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.0.tgz#e1e5affbbd16ae768dd2674394b9ad3022653140"
 
-vue-material@^0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/vue-material/-/vue-material-0.5.2.tgz#3cac19a3517ed476b8abf284050e4998e03fc2fd"
+vue-material@^0.6.3:
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/vue-material/-/vue-material-0.6.3.tgz#28b7131cdba441d484ac5a2b3bc0a6291319fd0b"
   dependencies:
-    vue "^2.1.7"
+    vue "^2.1.8"
 
 vue-router@^2.0.3:
   version "2.1.1"
@@ -1452,7 +1506,7 @@ vue@^2.1.0:
   version "2.1.6"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.1.6.tgz#2fc0024c07479ac6bc7d34a2cd5ef9ca5e90b143"
 
-vue@^2.1.7:
+vue@^2.1.8:
   version "2.1.8"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.1.8.tgz#ae30aa86024fccf5535292ce414e7b4c221a1756"
 
@@ -1465,6 +1519,10 @@ widest-line@^1.0.0:
   resolved "https://registry.yarnpkg.com/widest-line/-/widest-line-1.0.0.tgz#0c09c85c2a94683d0d7eaf8ee097d564bf0e105c"
   dependencies:
     string-width "^1.0.1"
+
+winchan@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/winchan/-/winchan-0.1.4.tgz#88fa12411cd542eb626018c38a196bcbb17993bb"
 
 wordwrap@~0.0.2:
   version "0.0.3"
