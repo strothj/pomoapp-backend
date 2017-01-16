@@ -1070,9 +1070,9 @@ pinkie@^2.0.0, pinkie@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
 
-pomoapp-frontend@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/pomoapp-frontend/-/pomoapp-frontend-2.1.0.tgz#7277e2eb710b8cf9c4c28200133cbcdfd8655cea"
+pomoapp-frontend@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/pomoapp-frontend/-/pomoapp-frontend-2.1.1.tgz#3298622cc842da911b2f9d43f0a114f4e9325829"
   dependencies:
     auth0-js "^8.0.2"
     axios "^0.15.3"
