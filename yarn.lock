@@ -617,6 +617,10 @@ has-flag@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-1.0.0.tgz#9d9e793165ce017a00f00418c43f942a7b1d11fa"
 
+headroom.js@^0.9.3:
+  version "0.9.3"
+  resolved "https://registry.yarnpkg.com/headroom.js/-/headroom.js-0.9.3.tgz#6d48499a2b9883fcc0683b26f461e732f149a1fe"
+
 hoek@2.x.x:
   version "2.16.3"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-2.16.3.tgz#20bb7403d3cea398e91dc4710a8ff1b8274a25ed"
@@ -741,6 +745,10 @@ js-tokens@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-2.0.0.tgz#79903f5563ee778cc1162e6dcf1a0027c97f9cb5"
 
+js-tokens@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.0.tgz#a2f2a969caae142fb3cd56228358c89366957bd1"
+
 jsbn@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.0.tgz#650987da0dd74f4ebf5a11377a2aa2d273e97dfd"
@@ -847,6 +855,12 @@ lodash.set@^4.0.0:
 lodash@^4.14.0:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
+
+loose-envify@^1.2.0:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.3.1.tgz#d1a8ad33fa9ce0e713d65fdd0ac8b748d478c848"
+  dependencies:
+    js-tokens "^3.0.0"
 
 lowercase-keys@^1.0.0:
   version "1.0.0"
@@ -1070,15 +1084,17 @@ pinkie@^2.0.0, pinkie@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
 
-pomoapp-frontend@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/pomoapp-frontend/-/pomoapp-frontend-2.1.1.tgz#3298622cc842da911b2f9d43f0a114f4e9325829"
+pomoapp-frontend@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/pomoapp-frontend/-/pomoapp-frontend-2.2.0.tgz#741c46a604d17a41ce21eb5a557737b413322768"
   dependencies:
     auth0-js "^8.0.2"
     axios "^0.15.3"
+    headroom.js "^0.9.3"
     lodash.padstart "^4.6.1"
     progressbar.js "^1.0.1"
     vue "^2.1.0"
+    vue-focus "^2.1.0"
     vue-material "^0.6.3"
     vue-router "^2.0.3"
     vuex "^2.0.0"
@@ -1482,6 +1498,12 @@ v8flags@^2.0.11:
 vary@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.0.tgz#e1e5affbbd16ae768dd2674394b9ad3022653140"
+
+vue-focus@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/vue-focus/-/vue-focus-2.1.0.tgz#7a0337ce9074d5ef03d15a4b5b862cf45e5e04e3"
+  dependencies:
+    loose-envify "^1.2.0"
 
 vue-material@^0.6.3:
   version "0.6.3"
